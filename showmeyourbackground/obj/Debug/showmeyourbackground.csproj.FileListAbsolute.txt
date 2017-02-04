@@ -1,0 +1,8 @@
+D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.exe.config
+D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.exe
+D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.pdb
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.csprojResolveAssemblyReference.cache
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.csproj.GenerateResource.Cache
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.exe
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.pdb
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.MainForm.resources
