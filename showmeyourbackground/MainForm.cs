@@ -14,6 +14,8 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 
 
@@ -36,13 +38,21 @@ namespace showmeyourbackground
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
+		[DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
+		static extern int SystemParametersInfo
+		(
+			int uAction,
+			int uParam,
+			string lpvParam,
+			int fuWinIni
+		);
 		void button2_Click(object sender, EventArgs e)
 		{
 			this.timer1.Start();
 		}
 		void timer1_Tick(object sender, EventArgs e)
 		{
-			string mainurl = "https://pixabay.com/en/editors_choice/";
+			string mainurl = "https://pixabay.com/en/photos/?order=popular";
 			string mhtml,pichtml,picurl;
 			if(isConn())
 			{
@@ -55,11 +65,12 @@ namespace showmeyourbackground
 				picurl = GetPicURI(pichtml,@"img itemprop=""contentURL""");
 				if(DownloadCheck(picurl))
 				{
-					SaveAsWebImg(picurl);
+					Changepaperwall(SaveAsWebImg(picurl));
 				}
 			}
-				
+			
 		}
+		
 		
 		/// <summary>  
 		/// 初始化  
@@ -71,6 +82,23 @@ namespace showmeyourbackground
 			{
 				File.Create(Define.Htmltext);
 			}
+		}
+		
+		/// <summary>  
+		/// 更改壁纸  
+		/// </summary>  
+		/// <param name="picPath">图片文件地址</param>   
+		public void Changepaperwall(string picPath)
+		{
+			string strSavePath = picPath;
+		       RegistryKey hk = Registry.CurrentUser;
+			RegistryKey run = hk.CreateSubKey(@"Control Panel\Desktop\");
+			run.SetValue("Wallpaper", strSavePath); //将新图片路径写入注册表
+			run.SetValue("TileWallpaper", "0");//0 居中 1  平铺 默认
+            		run.SetValue("WallpaperStyle", "0");//2 拉伸
+            		
+		       SystemParametersInfo(20, 1, strSavePath, 0x1);//SPI_SETDESKWALLPAPER
+		       run.Close();
 		}
 		
 		/// <summary>  
@@ -299,7 +327,6 @@ namespace showmeyourbackground
 	            }
 	            catch (Exception ex)
 	            {
-	            	MessageBox.Show(ex.Message);
 	                return false;
 	            }
 	        }
@@ -308,11 +335,11 @@ namespace showmeyourbackground
 	        /// 下载并保存图片
 	       /// </summary>  
 	          /// <param name="picUrl">图片地址</param>  
-	          /// <returns>图片文件名</returns>
+	          /// <returns>图片文件地址</returns>
 	        public string SaveAsWebImg(string picUrl)  
 		{  
 		    string result = "";  
-		    string path = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"/File/";  //目录  
+		    string path = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"File/";  //目录  
 		    try  
 		    {  
 		        if (!String.IsNullOrEmpty(picUrl))  
@@ -322,7 +349,7 @@ namespace showmeyourbackground
 		            string fileName = nowTime.Month.ToString() + nowTime.Day.ToString() + nowTime.Hour.ToString() + nowTime.Minute.ToString() + nowTime.Second.ToString() + rd.Next(1000, 1000000) + ".jpeg";  
 		            WebClient webClient = new WebClient();  
 		            webClient.DownloadFile(picUrl, path + fileName);  
-		            result = fileName;  
+		            result = path + fileName;  
 		        }  
 		    }  
 		    catch(Exception ex) {MessageBox.Show(ex.Message); }
