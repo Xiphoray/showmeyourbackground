@@ -53,15 +53,17 @@ namespace showmeyourbackground
 		void timer1_Tick(object sender, EventArgs e)
 		{
 			string mainurl = "https://pixabay.com/en/photos/?order=popular";
-			string mhtml,pichtml,picurl;
+			string mhtml,pichtml,picurl,htmlurl;
 			if(isConn())
 			{
 				mhtml = GetHtmlStrLoc();
-				if(mhtml == "")
+				htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
+				if(htmlurl == "https://pixabay.com")
 				{
 					mhtml = GetHtmlStrNet(mainurl,"UTF8");
+					htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
 				}
-				pichtml = GetHtmlStr(GetHtmlURI(mhtml,@"div class=""item""","a href"),"UTF8");
+				pichtml = GetHtmlStr(htmlurl,"UTF8");
 				picurl = GetPicURI(pichtml,@"img itemprop=""contentURL""");
 				if(DownloadCheck(picurl))
 				{
