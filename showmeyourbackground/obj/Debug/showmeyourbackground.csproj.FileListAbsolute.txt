@@ -6,3 +6,9 @@ D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourback
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.exe
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.pdb
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.MainForm.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg1.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg1_2.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg2.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg3.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg4.resources

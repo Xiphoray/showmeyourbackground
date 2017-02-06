@@ -1,0 +1,12 @@
+D:\project C#\showmeyourbackground\showmeyourbackground\bin\Release\showmeyourbackground.exe.config
+D:\project C#\showmeyourbackground\showmeyourbackground\bin\Release\showmeyourbackground.exe
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.csprojResolveAssemblyReference.cache
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg1_2.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg1.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg2.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg3.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg4.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.MainForm.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.csproj.GenerateResource.Cache
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.exe

@@ -33,6 +33,7 @@ namespace showmeyourbackground
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
+			
 			init();
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
@@ -48,41 +49,149 @@ namespace showmeyourbackground
 		);
 		void button2_Click(object sender, EventArgs e)
 		{
+			label1.Show();
+			button2.Hide();
+			comboBox1.Hide();
+			work();
 			this.timer1.Start();
 		}
 		void timer1_Tick(object sender, EventArgs e)
 		{
-			string mainurl = "https://pixabay.com/en/photos/?order=popular";
-			string mhtml,pichtml,picurl,htmlurl;
-			if(isConn())
-			{
-				mhtml = GetHtmlStrLoc();
-				htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
-				if(htmlurl == "https://pixabay.com")
-				{
-					mhtml = GetHtmlStrNet(mainurl,"UTF8");
-					htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
-				}
-				pichtml = GetHtmlStr(htmlurl,"UTF8");
-				picurl = GetPicURI(pichtml,@"img itemprop=""contentURL""");
-				if(DownloadCheck(picurl))
-				{
-					Changepaperwall(SaveAsWebImg(picurl));
-				}
-			}
-			
+			work();
 		}
-		
+		void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			//窗体关闭原因为单击"关闭"按钮或Alt+F4
+			if (e.CloseReason == CloseReason.UserClosing)
+			 {
+			 	e.Cancel = true;           //取消关闭操作 表现为不关闭窗体
+			 	notifyIcon1.Visible = true;   //设置图标可见
+			        this.Hide();               //隐藏窗体
+			        MessageBox.Show("SMYB已被你打入冷宫","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+			  }
+		}
+		void button1_Click(object sender, EventArgs e)
+		{
+			button1.Hide ();
+			this.Hide();
+			notifyIcon1.Visible = true;
+			egg();
+		}
+		void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//点击"是(YES)"退出程序
+			    if (MessageBox.Show("确定要离开?", "",
+			                System.Windows.Forms.MessageBoxButtons.YesNo,
+			                System.Windows.Forms.MessageBoxIcon.Warning)
+			        == System.Windows.Forms.DialogResult.Yes)
+			    {
+			        notifyIcon1.Visible = false;   //设置图标不可见
+			        this.Dispose();                //释放资源
+			        Application.Exit();            //关闭应用程序窗体
+			    }
+		}
+		void 暂停ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			timer1.Stop();
+			button2.Show ();
+			comboBox1.Show();
+			label1.Hide ();
+			this.Show();                                //窗体显示
+		        this.WindowState = FormWindowState.Normal;  //窗体状态默认大小
+		        this.Activate();                            //激活窗体给予焦点
+		}
+		void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			//双击鼠标"左键"发生
+			    if (e.Button == MouseButtons.Left)
+			    {
+			        this.Visible = true;                        //窗体可见
+			        this.WindowState = FormWindowState.Normal;  //窗体默认大小
+			        this.notifyIcon1.Visible = true;            //设置图标可见
+			    }
+		}
+		void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			string ChangeTimeS = comboBox1.Text;
+			ChangeTimeS = ChangeTimeS.Substring(0,ChangeTimeS.Length-2);
+			int ChangeTimeI = Convert.ToInt16(ChangeTimeS);
+			timer1.Interval = ChangeTimeI * 60000;
+		}
 		
 		/// <summary>  
 		/// 初始化  
 		/// </summary>    
 		public void init()
 		{
-			
+			comboBox1.SelectedIndex = 3;
+			if (Directory.Exists(Define.datafiles) == false)//如果不存在就创建file文件夹
+		         {
+		             Directory.CreateDirectory(Define.datafiles);
+		         }
+			if (Directory.Exists(Define.Picfiles ) == false)//如果不存在就创建file文件夹
+		         {
+		             Directory.CreateDirectory(Define.Picfiles );
+		         }
+			if (Directory.Exists(Define.Imgfiles ) == false)//如果不存在就创建file文件夹
+		         {
+		             Directory.CreateDirectory(Define.Imgfiles);
+		         }
+			if(!File.Exists(Define.eggtext))
+			{
+				File.WriteAllText(Define.eggtext,"");
+				
+			}
 			if(!File.Exists(Define.Htmltext))
 			{
-				File.Create(Define.Htmltext);
+				File.WriteAllText(Define.Htmltext,"");
+			}
+			
+			 RegistryKey hk = Registry.CurrentUser;
+			RegistryKey run = hk.CreateSubKey(@"Control Panel\Desktop\");
+			run.SetValue("TileWallpaper", "0");//0 居中 1  平铺 默认
+            		run.SetValue("WallpaperStyle", "0");//2 拉伸
+			RegistryKey ak = Registry.CurrentUser;
+			RegistryKey ran = hk.CreateSubKey(@"Control Panel\Personalization\Desktop Slideshow");
+			ran.SetValue("AnimationDuration",9000);
+			run.Close();
+			ran.Close();
+			if(coloreggcheck())
+				button1.Show();
+		}
+		
+		/// <summary>  
+		/// 运行
+		/// </summary>    
+		public void work()
+		{
+			string mainurl = @"https://pixabay.com/en/photos/?image_type=photo&q=&order=latest&orientation=horizontal";
+			string mhtml,pichtml,picurl,htmlurl;
+			if(isConn())
+			{
+				try
+				{
+					mhtml = GetHtmlStrLoc();
+					htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
+					if(htmlurl == "https://pixabay.com")
+					{
+						mhtml = GetHtmlStrNet(mainurl,"UTF8");
+						htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
+					}
+					pichtml = GetHtmlStr(htmlurl,"UTF8");
+					picurl = GetPicURI(pichtml,@"img itemprop=""contentURL""");
+					if(DownloadCheck(picurl))
+					{
+						Changepaperwall(SaveAsWebImg(picurl));
+					}
+				}
+				catch(Exception)
+				{
+					GetLocImg();
+				}
+			}
+			else
+			{
+				GetLocImg();
 			}
 		}
 		
@@ -96,11 +205,23 @@ namespace showmeyourbackground
 		       RegistryKey hk = Registry.CurrentUser;
 			RegistryKey run = hk.CreateSubKey(@"Control Panel\Desktop\");
 			run.SetValue("Wallpaper", strSavePath); //将新图片路径写入注册表
-			run.SetValue("TileWallpaper", "0");//0 居中 1  平铺 默认
-            		run.SetValue("WallpaperStyle", "0");//2 拉伸
-            		
+			run.Close();
 		       SystemParametersInfo(20, 1, strSavePath, 0x1);//SPI_SETDESKWALLPAPER
-		       run.Close();
+		       
+		}
+		
+		/// <summary>  
+		/// 随机选择图片
+		/// </summary>  
+		/// <returns>图片文件地址</returns> 
+		public void GetLocImg()
+		{
+			string filepath = Define.ImgPath;
+			string [] filenames=Directory.GetFiles(filepath);  //获取该文件夹下面的所有文件名   
+			int Imgnum = filenames.Length;
+			Random ra = new Random();
+			int ran = ra.Next(0,Imgnum);
+			Changepaperwall((string)filenames.GetValue(ran));
 		}
 		
 		/// <summary>  
@@ -138,9 +259,9 @@ namespace showmeyourbackground
 		        res.Close();
 		        return length;
 		    } 
-		    catch (WebException ex)
+		    catch (WebException)
 		    {
-		    	MessageBox.Show(ex.Message);
+		    	//MessageBox.Show(ex.Message);
 		        return 0;
 		    }
 		}
@@ -207,7 +328,7 @@ namespace showmeyourbackground
 		        response.Close();  
 		        
 		        string pathString = Define.Htmltext;
-			StreamWriter writer = new StreamWriter(pathString,false,System.Text.Encoding.Default);
+			StreamWriter writer = new StreamWriter(pathString,false,Encoding.Default);
 			writer.WriteLine(htmlStr);
 			writer.Close();
 		    }  
@@ -224,7 +345,7 @@ namespace showmeyourbackground
 	          	string htmlStr = "";
 	          	try
 	          	{
-		          	StreamReader reader = new StreamReader(pathString,System.Text.Encoding.Default);
+		          	StreamReader reader = new StreamReader(pathString,Encoding.Default);
 		          	while(!reader.EndOfStream)
 		          	{
 		          		htmlStr += reader.ReadLine();
@@ -232,10 +353,11 @@ namespace showmeyourbackground
 		          	reader.Close();
 		          	return htmlStr;
 	          	}
-	          	catch(Exception ex)
+	          	catch(Exception)
 	          	{
-	          		MessageBox.Show(ex.Message);
+	          		//MessageBox.Show(ex.Message);
 	          		return null;
+	          		
 	          	}
 	          }
 	          
@@ -310,6 +432,22 @@ namespace showmeyourbackground
 	             return result;  
 	         }  
 	          
+	          /// <summary>  
+		/// 彩蛋
+		/// </summary>  
+		public void egg()
+		{
+			string pathString = Define.eggtext;
+			StreamWriter writer = new StreamWriter(pathString,false,Encoding.Default);
+			writer.WriteLine("hehehehe233");
+			writer.Close();
+			MessageBox.Show("错误（0x23333）  系统数据遭外来文件破环，请重启恢复，或联系厂商","警告",MessageBoxButtons.AbortRetryIgnore,MessageBoxIcon.Error);
+			System.Threading.Thread.Sleep(2000);
+			egg eggs1 = new showmeyourbackground.egg();
+			eggs1.Show();
+			
+		}
+		
 	           /// <summary>  
 		/// 判断是否联网
 		/// </summary>  
@@ -327,7 +465,7 @@ namespace showmeyourbackground
 	                else
 	                    return true;
 	            }
-	            catch (Exception ex)
+	            catch (Exception)
 	            {
 	                return false;
 	            }
@@ -341,7 +479,7 @@ namespace showmeyourbackground
 	        public string SaveAsWebImg(string picUrl)  
 		{  
 		    string result = "";  
-		    string path = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"File/";  //目录  
+		    string path = Define.PicPath;  //目录  
 		    try  
 		    {  
 		        if (!String.IsNullOrEmpty(picUrl))  
@@ -351,55 +489,74 @@ namespace showmeyourbackground
 		            string fileName = nowTime.Month.ToString() + nowTime.Day.ToString() + nowTime.Hour.ToString() + nowTime.Minute.ToString() + nowTime.Second.ToString() + rd.Next(1000, 1000000) + ".jpeg";  
 		            WebClient webClient = new WebClient();  
 		            webClient.DownloadFile(picUrl, path + fileName);  
-		            result = path + fileName;  
+		            result = Define.ImgPath + fileName;  
+		            ChangePic(fileName);
 		        }  
 		    }  
-		    catch(Exception ex) {MessageBox.Show(ex.Message); }
+		    catch(Exception) 
+		    { 
+		    	GetLocImg();
+		    }
 		    return result;  
 		}
-		void Form1_FormClosing(object sender, FormClosingEventArgs e)
-		{
-			//窗体关闭原因为单击"关闭"按钮或Alt+F4
-			if (e.CloseReason == CloseReason.UserClosing)
-			 {
-			 	e.Cancel = true;           //取消关闭操作 表现为不关闭窗体
-			 	notifyIcon1.Visible = true;   //设置图标可见
-			        this.Hide();               //隐藏窗体
-			        MessageBox.Show("已最小化至面板","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-			  }
-		}
-		void 主页面ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.Show();                                //窗体显示
-			this.WindowState = FormWindowState.Normal;  //窗体状态默认大小
-			this.Activate();                            //激活窗体给予焦点
-		}
-		void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			//点击"是(YES)"退出程序
-			    if (MessageBox.Show("确定要退出程序?", "安全提示",
-			                System.Windows.Forms.MessageBoxButtons.YesNo,
-			                System.Windows.Forms.MessageBoxIcon.Warning)
-			        == System.Windows.Forms.DialogResult.Yes)
-			    {
-			        notifyIcon1.Visible = false;   //设置图标不可见
-			        this.Dispose();                //释放资源
-			        Application.Exit();            //关闭应用程序窗体
-			    }
-		}
-		void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-		{
-			//双击鼠标"左键"发生
-			    if (e.Button == MouseButtons.Left)
-			    {
-			        this.Visible = true;                        //窗体可见
-			        this.WindowState = FormWindowState.Normal;  //窗体默认大小
-			        this.notifyIcon1.Visible = true;            //设置图标可见
-			    }
-		}
+	        
+	         /// <summary>
+	        /// 缩放图片
+	       /// </summary>  
+	          /// <param name="Picpath">图片文件地址</param>  
+	        public void ChangePic(string Picpath)
+	        {
+	        	int SH = Screen.PrimaryScreen.Bounds.Height;
+			int SW = Screen.PrimaryScreen.Bounds.Width;
+			Image pic=Image.FromFile(Define.PicPath + Picpath);//strFilePath是该图片的绝对路径
+			int PW=pic.Width;//长度像素值
+			int PH=pic.Height;//高度像素值 
+			if((PH * SW)/PW >= SH)
+			{
+				Bitmap repic = new Bitmap(pic,SW,(PH*SW)/PW);
+				repic.Save(Define.ImgPath + Picpath);
+				repic.Dispose();
+			}
+			else
+			{
+				Bitmap repic = new Bitmap(pic,(PW*SH)/PH,SH);
+				repic.Save(Define.ImgPath + Picpath);
+				repic.Dispose();
+			}
+			pic.Dispose();
+			File.Delete(Define.PicPath + Picpath);
+	        }
+	        
+		 /// <summary>
+	        /// 彩蛋检测
+	       /// </summary>  
+	          /// <returns>真假值</returns>
+	          public bool coloreggcheck()
+	          {
+	          	string pathString = Define.eggtext;
+	          	string htmlStr = "";
+		          StreamReader reader = new StreamReader(pathString,Encoding.Default);
+		          while(!reader.EndOfStream)
+		          {
+		          	htmlStr += reader.ReadLine();
+		          }
+		          reader.Close();
+		          if(htmlStr == "")
+		          	return true;
+		          else
+		          	return false;
+	          }
+		
+		
 	}
 	public static class Define
 	{
-		public static string Htmltext = @"data\htmltext.txt";
+		public static string datafiles = AppDomain.CurrentDomain.SetupInformation.ApplicationBase +@"data";
+		public static string Imgfiles = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"File";
+		public static string Picfiles = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Pic";
+		public static string Htmltext = AppDomain.CurrentDomain.SetupInformation.ApplicationBase +@"data\htmltext.txt";
+		public static string eggtext = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"data\egg.txt";
+		public static string  ImgPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"File\";
+		public static string  PicPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Pic\";
 	}
 }
