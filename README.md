@@ -10,6 +10,18 @@
 
 直接按开始键程序开始运行，可放置在后台。
 
+
+ 
+
+
+### 版本下载：
+
+[V1.0] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.0/showmeyourbackground.V1.0.exe)
+ 
+ 
+  
+ 
+ 
 ### 2017.2.4
 + 完成自动下载图片部分
 
