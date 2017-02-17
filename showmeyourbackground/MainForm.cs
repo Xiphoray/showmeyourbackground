@@ -40,37 +40,56 @@ namespace showmeyourbackground
 			//
 		}
 		[DllImport("user32.dll", EntryPoint = "SystemParametersInfo")]
-		static extern int SystemParametersInfo
+		static extern int SystemParametersInfo                                 //注册表写入的东西，不要改
 		(
 			int uAction,
 			int uParam,
 			string lpvParam,
 			int fuWinIni
 		);
-		void button2_Click(object sender, EventArgs e)
+		void button2_Click(object sender, EventArgs e) //运行按键 
 		{
 			label1.Show();
 			button2.Hide();
+			comboBox2.Hide();
 			comboBox1.Hide();
+			workingflag = true ;
 			work();
 			this.timer1.Start();
 		}
-		void timer1_Tick(object sender, EventArgs e)
+		void timer1_Tick(object sender, EventArgs e)  //计时器
 		{
 			work();
 		}
-		void Form1_FormClosing(object sender, FormClosingEventArgs e)
+		void Form1_FormClosing(object sender, FormClosingEventArgs e)  //关闭主框架时提示
 		{
-			//窗体关闭原因为单击"关闭"按钮或Alt+F4
-			if (e.CloseReason == CloseReason.UserClosing)
-			 {
-			 	e.Cancel = true;           //取消关闭操作 表现为不关闭窗体
-			 	notifyIcon1.Visible = true;   //设置图标可见
-			        this.Hide();               //隐藏窗体
-			        MessageBox.Show("SMYB已被你打入冷宫","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-			  }
+			if(workingflag == true )
+			{
+				//窗体关闭原因为单击"关闭"按钮或Alt+F4
+				if (e.CloseReason == CloseReason.UserClosing)
+				 {
+				 	e.Cancel = true;           //取消关闭操作 表现为不关闭窗体
+				 	notifyIcon1.Visible = true;   //设置图标可见
+				        this.Hide();               //隐藏窗体
+				        MessageBox.Show("SMYB已被你打入冷宫","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+				  }
+			}
+			else 
+			{
+				//点击"是(YES)"退出程序
+			    if (MessageBox.Show("确定要离开?", "",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
+			    {
+			        notifyIcon1.Visible = false;   //设置图标不可见
+			        this.Dispose();                //释放资源
+			        Application.Exit();            //关闭应用程序窗体
+			    }
+			    else
+			    {
+			    	e.Cancel = true;           //取消关闭操作 表现为不关闭窗体
+			    }
+			}
 		}
-		void button1_Click(object sender, EventArgs e)
+		void button1_Click(object sender, EventArgs e) //彩蛋按键
 		{
 			button1.Hide ();
 			this.Hide();
@@ -80,10 +99,7 @@ namespace showmeyourbackground
 		void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			//点击"是(YES)"退出程序
-			    if (MessageBox.Show("确定要离开?", "",
-			                System.Windows.Forms.MessageBoxButtons.YesNo,
-			                System.Windows.Forms.MessageBoxIcon.Warning)
-			        == System.Windows.Forms.DialogResult.Yes)
+			    if (MessageBox.Show("确定要离开?", "",MessageBoxButtons.YesNo,MessageBoxIcon.Warning) == System.Windows.Forms.DialogResult.Yes)
 			    {
 			        notifyIcon1.Visible = false;   //设置图标不可见
 			        this.Dispose();                //释放资源
@@ -93,12 +109,19 @@ namespace showmeyourbackground
 		void 暂停ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			timer1.Stop();
+			workingflag = false;
 			button2.Show ();
 			comboBox1.Show();
 			label1.Hide ();
 			this.Show();                                //窗体显示
 		        this.WindowState = FormWindowState.Normal;  //窗体状态默认大小
 		        this.Activate();                            //激活窗体给予焦点
+		}
+		void 下一张ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			work();
+			timer1.Stop();
+			timer1.Start();
 		}
 		void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
 		{
@@ -110,20 +133,58 @@ namespace showmeyourbackground
 			        this.notifyIcon1.Visible = true;            //设置图标可见
 			    }
 		}
-		void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+		void comboBox1_SelectedIndexChanged(object sender, EventArgs e)  //时间控制
 		{
 			string ChangeTimeS = comboBox1.Text;
 			ChangeTimeS = ChangeTimeS.Substring(0,ChangeTimeS.Length-2);
 			int ChangeTimeI = Convert.ToInt16(ChangeTimeS);
 			timer1.Interval = ChangeTimeI * 60000;
 		}
+		void comboBox2_SelectedIndexChanged(object sender, EventArgs e)  //类别控制
+		{
+			switch(comboBox2 .Text)
+			{
+				case "无限制":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=&order=latest&orientation=horizontal";
+					break;
+				case "建筑":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&orientation=horizontal&order=latest&cat=buildings";
+					break;
+				case "动物":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=animals&orientation=horizontal&order=latest";
+					break;
+				case "自然":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&order=latest&orientation=horizontal&cat=nature";
+					break;
+				case "人物":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=people&order=latest&orientation=horizontal";
+					break;
+				case "宗教":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&orientation=horizontal&order=latest&cat=religion";
+					break;
+				case "旅行":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=travel&orientation=horizontal&order=latest";
+					break;
+				case "静物":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&order=latest&orientation=horizontal&cat=backgrounds";
+					break;
+				case "名胜":
+					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=places&order=latest&orientation=horizontal";
+					break;
+			}
+			
+			GetHtmlStrNet(mainurl,"UTF8");
+		}
 		
+		
+		public static bool workingflag = false ;
+		public static string mainurl;
 		/// <summary>  
 		/// 初始化  
 		/// </summary>    
 		public void init()
 		{
-			comboBox1.SelectedIndex = 3;
+
 			if (Directory.Exists(Define.datafiles) == false)//如果不存在就创建file文件夹
 		         {
 		             Directory.CreateDirectory(Define.datafiles);
@@ -145,18 +206,21 @@ namespace showmeyourbackground
 			{
 				File.WriteAllText(Define.Htmltext,"");
 			}
-			
+			workingflag = false ;
+			mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=&order=latest&orientation=horizontal";
 			 RegistryKey hk = Registry.CurrentUser;
 			RegistryKey run = hk.CreateSubKey(@"Control Panel\Desktop\");
 			run.SetValue("TileWallpaper", "0");//0 居中 1  平铺 默认
             		run.SetValue("WallpaperStyle", "0");//2 拉伸
 			RegistryKey ak = Registry.CurrentUser;
 			RegistryKey ran = hk.CreateSubKey(@"Control Panel\Personalization\Desktop Slideshow");
-			ran.SetValue("AnimationDuration",9000);
+			ran.SetValue("AnimationDuration",4500);
 			run.Close();
 			ran.Close();
 			if(coloreggcheck())
 				button1.Show();
+			comboBox1.SelectedIndex = 3;
+			comboBox2.SelectedIndex = 0;
 		}
 		
 		/// <summary>  
@@ -164,7 +228,7 @@ namespace showmeyourbackground
 		/// </summary>    
 		public void work()
 		{
-			string mainurl = @"https://pixabay.com/en/photos/?image_type=photo&q=&order=latest&orientation=horizontal";
+			
 			string mhtml,pichtml,picurl,htmlurl;
 			if(isConn())
 			{
@@ -548,6 +612,8 @@ namespace showmeyourbackground
 	          }
 		
 		
+		
+		
 	}
 	public static class Define
 	{
@@ -558,5 +624,6 @@ namespace showmeyourbackground
 		public static string eggtext = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"data\egg.txt";
 		public static string  ImgPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"File\";
 		public static string  PicPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"Pic\";
+		
 	}
 }

@@ -25,7 +25,10 @@ namespace showmeyourbackground
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ToolStripMenuItem 暂停ToolStripMenuItem;
 		private System.Windows.Forms.Button button1;
-		
+		private System.Windows.Forms.ToolStripMenuItem 下一张ToolStripMenuItem;
+		private System.Windows.Forms.ComboBox comboBox2;
+	
+
 		/// <summary>
 		/// Disposes resources used by the form.
 		/// </summary>
@@ -55,11 +58,13 @@ namespace showmeyourbackground
 			this.button2 = new System.Windows.Forms.Button();
 			this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.下一张ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.暂停ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
+			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.statusStrip1.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -89,7 +94,7 @@ namespace showmeyourbackground
 			// button2
 			// 
 			this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.button2.Location = new System.Drawing.Point(325, 200);
+			this.button2.Location = new System.Drawing.Point(325, 213);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(100, 30);
 			this.button2.TabIndex = 1;
@@ -107,22 +112,30 @@ namespace showmeyourbackground
 			// contextMenuStrip1
 			// 
 			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.下一张ToolStripMenuItem,
 			this.暂停ToolStripMenuItem,
 			this.退出ToolStripMenuItem});
 			this.contextMenuStrip1.Name = "contextMenuStrip1";
-			this.contextMenuStrip1.Size = new System.Drawing.Size(105, 48);
+			this.contextMenuStrip1.Size = new System.Drawing.Size(119, 70);
+			// 
+			// 下一张ToolStripMenuItem
+			// 
+			this.下一张ToolStripMenuItem.Name = "下一张ToolStripMenuItem";
+			this.下一张ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+			this.下一张ToolStripMenuItem.Text = "下一张";
+			this.下一张ToolStripMenuItem.Click += new System.EventHandler(this.下一张ToolStripMenuItem_Click);
 			// 
 			// 暂停ToolStripMenuItem
 			// 
 			this.暂停ToolStripMenuItem.Name = "暂停ToolStripMenuItem";
-			this.暂停ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+			this.暂停ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
 			this.暂停ToolStripMenuItem.Text = "暂停";
 			this.暂停ToolStripMenuItem.Click += new System.EventHandler(this.暂停ToolStripMenuItem_Click);
 			// 
 			// 退出ToolStripMenuItem
 			// 
 			this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-			this.退出ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+			this.退出ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
 			this.退出ToolStripMenuItem.Text = "退出";
 			this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
 			// 
@@ -140,9 +153,9 @@ namespace showmeyourbackground
 			"30分钟",
 			"45分钟",
 			"60分钟"});
-			this.comboBox1.Location = new System.Drawing.Point(300, 129);
+			this.comboBox1.Location = new System.Drawing.Point(302, 150);
 			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(152, 20);
+			this.comboBox1.Size = new System.Drawing.Size(150, 20);
 			this.comboBox1.TabIndex = 2;
 			this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
 			// 
@@ -168,13 +181,34 @@ namespace showmeyourbackground
 			this.button1.Visible = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
+			// comboBox2
+			// 
+			this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox2.FormattingEnabled = true;
+			this.comboBox2.Items.AddRange(new object[] {
+			"无限制",
+			"建筑",
+			"动物",
+			"自然",
+			"人物",
+			"宗教",
+			"旅行",
+			"静物",
+			"名胜"});
+			this.comboBox2.Location = new System.Drawing.Point(302, 97);
+			this.comboBox2.Name = "comboBox2";
+			this.comboBox2.Size = new System.Drawing.Size(150, 20);
+			this.comboBox2.TabIndex = 5;
+			this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(744, 431);
-			this.Controls.Add(this.button1);
 			this.Controls.Add(this.label1);
+			this.Controls.Add(this.comboBox2);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.comboBox1);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.statusStrip1);
