@@ -49,13 +49,24 @@ namespace showmeyourbackground
 		);
 		void button2_Click(object sender, EventArgs e) //运行按键 
 		{
-			label1.Show();
 			button2.Hide();
+			button3.Show();
 			comboBox2.Hide();
 			comboBox1.Hide();
 			workingflag = true ;
+			label1.Show();
 			work();
 			this.timer1.Start();
+		}
+		void button3_Click(object sender, EventArgs e) //暂停按键
+		{
+			button2 .Show();
+			button3.Hide ();
+			comboBox2.Show();
+			comboBox1.Show();
+			workingflag = false;
+			label1.Hide();
+			timer1.Stop();
 		}
 		void timer1_Tick(object sender, EventArgs e)  //计时器
 		{
@@ -112,6 +123,7 @@ namespace showmeyourbackground
 			workingflag = false;
 			button2.Show ();
 			comboBox1.Show();
+			comboBox2.Show ();
 			label1.Hide ();
 			this.Show();                                //窗体显示
 		        this.WindowState = FormWindowState.Normal;  //窗体状态默认大小
@@ -610,6 +622,7 @@ namespace showmeyourbackground
 		          else
 		          	return false;
 	          }
+		
 		
 		
 		
