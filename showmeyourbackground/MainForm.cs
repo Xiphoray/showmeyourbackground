@@ -122,6 +122,7 @@ namespace showmeyourbackground
 			timer1.Stop();
 			workingflag = false;
 			button2.Show ();
+			button3.Hide ();
 			comboBox1.Show();
 			comboBox2.Show ();
 			label1.Hide ();
