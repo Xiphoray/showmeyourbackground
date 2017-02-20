@@ -155,7 +155,7 @@ namespace showmeyourbackground
 		}
 		void comboBox2_SelectedIndexChanged(object sender, EventArgs e)  //类别控制
 		{
-			switch(comboBox2 .Text)
+			/*switch(comboBox2 .Text)
 			{
 				case "无限制":
 					mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=&order=latest&orientation=horizontal";
@@ -186,12 +186,13 @@ namespace showmeyourbackground
 					break;
 			}
 			
-			GetHtmlStrNet(mainurl,"UTF8");
+			GetHtmlStrNet(mainurl,"UTF8");*/
 		}
 		
 		
 		public static bool workingflag = false ;
 		public static string mainurl;
+		public static string Picstytle;
 		/// <summary>  
 		/// 初始化  
 		/// </summary>    
@@ -220,6 +221,7 @@ namespace showmeyourbackground
 				File.WriteAllText(Define.Htmltext,"");
 			}
 			workingflag = false ;
+			Picstytle = "无限制";
 			mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=&order=latest&orientation=horizontal";
 			 RegistryKey hk = Registry.CurrentUser;
 			RegistryKey run = hk.CreateSubKey(@"Control Panel\Desktop\");
@@ -247,6 +249,7 @@ namespace showmeyourbackground
 			{
 				try
 				{
+					StytleCheck ();
 					mhtml = GetHtmlStrLoc();
 					htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
 					if(htmlurl == "https://pixabay.com")
@@ -300,6 +303,8 @@ namespace showmeyourbackground
 			int ran = ra.Next(0,Imgnum);
 			Changepaperwall((string)filenames.GetValue(ran));
 		}
+		
+		
 		
 		/// <summary>  
 		/// 判断下载图片是否符合要求  
@@ -623,7 +628,50 @@ namespace showmeyourbackground
 		          else
 		          	return false;
 	          }
-		
+	          
+		/// <summary>  
+		/// 图片类别确认  
+		/// </summary>  
+		/// <returns>主url值</returns> 
+		public void StytleCheck()
+		{
+			
+			if(Picstytle != comboBox2 .Text)
+			{
+				Picstytle = comboBox2 .Text ;
+				switch(Picstytle)
+				{
+					case "无限制":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=&order=latest&orientation=horizontal";
+						break;
+					case "建筑":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&orientation=horizontal&order=latest&cat=buildings";
+						break;
+					case "动物":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=animals&orientation=horizontal&order=latest";
+						break;
+					case "自然":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&order=latest&orientation=horizontal&cat=nature";
+						break;
+					case "人物":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=people&order=latest&orientation=horizontal";
+						break;
+					case "宗教":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&orientation=horizontal&order=latest&cat=religion";
+						break;
+					case "旅行":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=travel&orientation=horizontal&order=latest";
+						break;
+					case "静物":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&order=latest&orientation=horizontal&cat=backgrounds";
+						break;
+					case "名胜":
+						mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=places&order=latest&orientation=horizontal";
+						break;
+				}
+				GetHtmlStrNet(mainurl,"UTF8");
+			}
+		}
 		
 		
 		
