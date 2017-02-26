@@ -62,6 +62,7 @@ namespace showmeyourbackground
 		{
 			button2 .Show();
 			button3.Hide ();
+			DelePic ();
 			comboBox2.Show();
 			comboBox1.Show();
 			workingflag = false;
@@ -120,6 +121,7 @@ namespace showmeyourbackground
 		void 暂停ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			timer1.Stop();
+			DelePic ();
 			workingflag = false;
 			button2.Show ();
 			button3.Hide ();
@@ -232,6 +234,7 @@ namespace showmeyourbackground
 			ran.SetValue("AnimationDuration",4500);
 			run.Close();
 			ran.Close();
+			DelePic();
 			if(coloreggcheck())
 				button1.Show();
 			comboBox1.SelectedIndex = 3;
@@ -296,12 +299,25 @@ namespace showmeyourbackground
 		/// <returns>图片文件地址</returns> 
 		public void GetLocImg()
 		{
-			string filepath = Define.ImgPath;
-			string [] filenames=Directory.GetFiles(filepath);  //获取该文件夹下面的所有文件名   
-			int Imgnum = filenames.Length;
-			Random ra = new Random();
-			int ran = ra.Next(0,Imgnum);
-			Changepaperwall((string)filenames.GetValue(ran));
+			try
+			{
+				string filepath = Define.ImgPath;
+				string [] filenames=Directory.GetFiles(filepath);  //获取该文件夹下面的所有文件名   
+				int Imgnum = filenames.Length;
+				Random ra = new Random();
+				int ran = ra.Next(0,Imgnum);
+				Changepaperwall((string)filenames.GetValue(ran));
+			}
+			catch(Exception)
+			{
+				NoPic nopic = new NoPic ();
+				nopic .TopMost = true;
+				Point p = new Point(Screen.PrimaryScreen.WorkingArea.Width - nopic.Width, Screen.PrimaryScreen.WorkingArea.Height - nopic.Height );  
+            			nopic .PointToScreen(p);  
+           			nopic .Location = p;
+				nopic.Enabled = true ;
+				nopic.Show ();
+			}
 		}
 		
 		
@@ -628,6 +644,27 @@ namespace showmeyourbackground
 		          else
 		          	return false;
 	          }
+	          
+	        /// <summary>  
+		/// 删除过期图片
+		/// </summary>    
+		public void DelePic()
+		{
+			string[] NumPic = Directory.GetFiles(Define .ImgPath);
+			DateTime nowtime = DateTime.Now.AddDays(-2);
+			DateTime Pictime;
+			if(NumPic .Length > 1)
+			{
+				for(int i = 0; i < NumPic .Length - 1; i++)
+				{
+					Pictime = File .GetLastWriteTime  (NumPic[i]);
+					if(nowtime .CompareTo (Pictime )  >  0)
+					{
+						File .Delete (NumPic[i]);
+					}
+				}
+			}
+		}
 	          
 		/// <summary>  
 		/// 图片类别确认  
