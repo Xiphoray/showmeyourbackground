@@ -11,37 +11,43 @@
 直接按开始键程序开始运行，可放置在后台。
 
 
- 
+  <br/>
 
 
 ### 版本下载：
 
-   [V1.0] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.0/showmeyourbackground.V1.0.exe)
-
-   [V1.1] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.1/showmeyourbackground.V1.1.exe)
+ [V1.2] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.2/showmeyourbackground.V1.2.exe)
  
+ [V1.1.1] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.1.1/showmeyourbackground.V1.1.1.exe)
  
-   [V1.1.1] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.1.1/showmeyourbackground.V1.1.1.exe)
+ [V1.1] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.1/showmeyourbackground.V1.1.exe)
+  
+ [V1.0] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.0/showmeyourbackground.V1.0.exe)
  
- 
- 
+  <br/>
  
  ***
  
+ <br/>
+### 2017.2.26
+### Version 1.2 发布
++ 修复在断网&&图库没图的情况下出错的问题（会出现一个贴心且炫酷的提示哦~）
+
++ 自动清除已存在48小时的图片（妈妈再也不用担心我的内存会爆啦），且会随机剩下一张，所以也不用担心没有背景啦
  
- 
+  <br/>
 ### 2017.2.20
 ### Version 1.1.1 发布
 + 紧急修复断网情况下更换类别时程序出错的问题（虽然断网情况下选类别是没有任何用处的）
  
- 
- 
+   
+  <br/>
 ### 2017.2.19
 + 紧急修复从任务栏返回时不能选择类别的问题
 
 + 在主页面添加暂停建
 
-
+ <br/>
 
 ### 2017.2.17
 ### Version 1.1 发布
@@ -56,7 +62,7 @@
 居然这么快就更新了。。。呵呵。。。
 
 
-
+ <br/>
 ### 2017.2.6
 ### Version 1.0 发布啦 ！ ！ ！
 + 下载图片自适应屏幕
@@ -72,11 +78,11 @@
 反正就是很开心啦，毕竟第一个版本做完了哈哈哈哈哈！！！
 
 
-
+ <br/>
 ### 2017.2.5（2）
 + 紧急修复网页刷新问题
 
-
+ <br/>
 
 ### 2017.2.5
 + 完成更换桌面部分
@@ -88,7 +94,7 @@
 图片默认居中，每隔24秒更换一次桌面。
 
 
-
+ <br/>
 ### 2017.2.4
 + 完成自动下载图片部分
 
