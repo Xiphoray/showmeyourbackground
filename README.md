@@ -2,7 +2,7 @@
 ## 一个可以定时在 pixabay.com 上爬图片，并将图片保存为壁纸的软件。
 ## A software that can download pictures from pixabay.com at regular time, and save the pictures as the wallpaper.
  
-在此向 John's background switcher 表示致意。本人初学 c# ，平时发现 JBS 在断网的情况下只会提示，
+在此向 John's background switcher 表示致意。本人初学 c#，平时发现 JBS 在断网的情况下只会提示，
 但不会自动转到本地图片进行更换，多感不便，因此决定写一个简单的壁纸更换软件。
 一开始想在 500px.com 上爬图片，但由于本人资历尚浅，无法应对经过js处理的网页，只好选择 pixabay.com 。
 
@@ -41,6 +41,7 @@ Make the software running by click on the "开始" button. It also can runs in t
  ***
  
  <br/>
+ 
 ### 2017.2.26
 ### Version 1.2 发布
 + 修复在断网&&图库没图的情况下出错的问题。（会出现一个贴心且炫酷的提示哦~）
@@ -51,6 +52,7 @@ Make the software running by click on the "开始" button. It also can runs in t
 
 
   <br/>
+  
 ### 2017.2.20
 ### Version 1.1.1 发布
 + 紧急修复断网情况下更换类别时程序出错的问题。（虽然断网情况下选类别是没有任何用处的）
@@ -63,60 +65,87 @@ Make the software running by click on the "开始" button. It also can runs in t
 + Repair the problem that you can't change the category when it comes back from the taskbar.
 
 + 在主页面添加暂停建。
-+ add a stop button at the main page.
++ Add a stop button at the main page.
 
 
  <br/>
+ 
 ### 2017.2.17
 ### Version 1.1 发布
-+ 新增壁纸类型选项（然而类型是照片作者自己写的，所以，你懂的）
++ 新增壁纸类型选项。（然而类型是照片作者自己写的，所以，你懂的）
++ You can choose the type of pictures now.(in fact, the types are made sure by the photographers themselves, so, you know what)
 
-+ 新增“下一张”选项，跳过不喜欢的壁纸（然而它仍然会下载下来，当你离线的时候会再次遇见它）
++ 新增“下一张”选项，跳过不喜欢的壁纸。（然而它仍然会下载下来，当你离线的时候会再次遇见它）
++ Add the option of "下一张" which can pass the dislike picture.(but it still will be download, when you are outline, you maybe will see it again)
 
-+ 人性化细节优化
++ 人性化细节优化。
++ Optimizing details of humanization.
 
-* 在网站还没刷新之前重复选同一类壁纸，会出现相同图片，这个问题以后再解决（如果还有以后的话）
++ 在网站还没刷新之前重复选同一类壁纸，会出现相同图片，这个问题以后再解决（如果还有以后的话）
++ There is a problem that choose the same type twice and it will download the same picture.I will solve this problem later.(if there is a 'later'...)
 
 居然这么快就更新了。。。呵呵。。。
 
+I can't believe that it can update in a such short time...hehe...
+
 
  <br/>
+ 
 ### 2017.2.6
 ### Version 1.0 发布啦 ！ ！ ！
-+ 下载图片自适应屏幕
++ 下载图片自适应屏幕。
++ Download the pictures and make them fit the screen.
 
-+ 支持最小化
++ 支持最小化。
++ It can minimize now.
 
-+ 可以选择换壁纸的间隔时间
++ 可以选择换壁纸的间隔时间。
++ You can choose the time of changing wallpaper.
 
-+ 细节优化
++ 细节优化。
++ Optimizing details.
 
-+ 写了换壁纸时渐变的，然而好像没效果，回头再看看怎么回事，或者哪位大神来说说，感激不尽
++ 写了换壁纸时渐变的，然而好像没效果，回头再看看怎么回事，或者哪位大神来说说，感激不尽。
++ I write the codes baout gradually changeing wallpaper, but it seems that it can't work.I will find out the reason later, or someone great at it tell me, thanks a lot.
 
 反正就是很开心啦，毕竟第一个版本做完了哈哈哈哈哈！！！
 
+Anyway, I'm so happy about it, because this is my first software version.
+
 
  <br/>
+ 
 ### 2017.2.5（2）
-+ 紧急修复网页刷新问题
++ 紧急修复网页刷新问题。
++ Repair the problem of reflash the web.
 
  <br/>
 
 ### 2017.2.5
-+ 完成更换桌面部分
++ 完成更换桌面部分。
++ Complete the part of changeing the wallpaper.
 
-+ 优化部分代码
++ 优化部分代码。
++ Optimizing details.
 
-自此程序基本功能已搭建完成，后续将进行各种优化和功能更新
+自此程序基本功能已搭建完成，后续将进行各种优化和功能更新。
+
+So far, the basic function of this software has completed. The next step is kinds of Optimizing and function updating.
 
 图片默认居中，每隔24秒更换一次桌面。
 
+The picture default place in the center. Change the wallpaper in each 24s.
+
 
  <br/>
+ 
 ### 2017.2.4
-+ 完成自动下载图片部分
++ 完成自动下载图片部分。
++ Complete the part of download the pictures automatically.
 
 点击开始运行，每隔24秒下载一张图片到File文件夹内。
+
+Click on "开始" and it will run.Download a picture to the file named File in each 24s.
 
 
 
