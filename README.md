@@ -1,20 +1,34 @@
 # showmeyourbackground
-## 一个可以定时在pixabay.com上爬图片，并将图片保存为壁纸的软件。
-在此向John's background switcher表示致意。本人初学c#，平时发现JBS在断网的情况下只会提示，
+## 一个可以定时在 pixabay.com 上爬图片，并将图片保存为壁纸的软件。
+## A software that can download pictures from pixabay.com at regular time, and save the pictures as the wallpaper.
+ 
+在此向 John's background switcher 表示致意。本人初学c#，平时发现JBS在断网的情况下只会提示，
 但不会自动转到本地图片进行更换，多感不便，因此决定写一个简单的壁纸更换软件。
-一开始想在500px.com上爬图片，但由于本人资历尚浅，无法应对经过js处理的网页，只好选择pixabay.com。
+一开始想在 500px.com上爬图片，但由于本人资历尚浅，无法应对经过js处理的网页，只好选择pixabay.com。
+
+Firstly, extend thanks to John's background switcher. I have learnt c# for a short time. Usually, I find  
+when using JBS without Internet, it only show a tip, but not use local pictures as wallpaper automatically. 
+I feel so unconvenient about it, so I decied to make a simple software that can change the wallpaper.
 
 这是本人首次编写完整的软件，有欠缺之处，还请各位大神指出。不胜感激。
 
+This is the first time that I programme a complete software by myself. If there are some disadvantages, please point them out.Think you so much.
+
 使用软件请直接打开showmeyourbackground.exe进行使用即可，建议放在非c盘区域（桌面也不要放），用快捷方式放在桌面，因为图片会直接以软件位置为地址下载。
 
+If you want to use the software, please open showmeyourbackground.exe directly. I recommend you to put the software in the disc which isn't C disc, because the picture will download in the location where the software placed.
+
 直接按开始键程序开始运行，可放置在后台。
+
+Make the software running by click on the "开始" button. It also can runs in the background.
+
 
 
   <br/>
 
 
 ### 版本下载：
+### DOWNLOAD：
 
  [V1.2] (https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.2/showmeyourbackground.V1.2.exe)
  
