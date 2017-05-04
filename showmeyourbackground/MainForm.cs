@@ -53,6 +53,7 @@ namespace showmeyourbackground
 			button3.Show();
 			comboBox2.Hide();
 			comboBox1.Hide();
+            comboBox3.Hide();
 			workingflag = true ;
 			label1.Show();
 			work();
@@ -65,6 +66,7 @@ namespace showmeyourbackground
 			DelePic ();
 			comboBox2.Show();
 			comboBox1.Show();
+            comboBox3.Show();
 			workingflag = false;
 			label1.Hide();
 			timer1.Stop();
@@ -127,6 +129,7 @@ namespace showmeyourbackground
 			button3.Hide ();
 			comboBox1.Show();
 			comboBox2.Show ();
+            comboBox3.Show();
 			label1.Hide ();
 			this.Show();                                //窗体显示
 		        this.WindowState = FormWindowState.Normal;  //窗体状态默认大小
@@ -190,9 +193,21 @@ namespace showmeyourbackground
 			
 			GetHtmlStrNet(mainurl,"UTF8");*/
 		}
-		
-		
-		public static bool workingflag = false ;
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox3.Text)
+            {
+                case "我大把流量呢~":
+                    netflag = true;
+                    break;
+                case "我没流量了啊~":
+                    netflag = false;
+                    break;
+            }
+        }
+
+        public static bool workingflag = false ;
+        public static bool netflag = true;
 		public static string mainurl;
 		public static string Picstytle;
 		/// <summary>  
@@ -223,6 +238,7 @@ namespace showmeyourbackground
 				File.WriteAllText(Define.Htmltext,"");
 			}
 			workingflag = false ;
+            netflag = true;
 			Picstytle = "无限制";
 			mainurl = @"https://pixabay.com/en/photos/?q=&image_type=photo&cat=&order=latest&orientation=horizontal";
 			 RegistryKey hk = Registry.CurrentUser;
@@ -239,6 +255,7 @@ namespace showmeyourbackground
 				button1.Show();
 			comboBox1.SelectedIndex = 3;
 			comboBox2.SelectedIndex = 0;
+            comboBox3.SelectedIndex = 0;
 		}
 		
 		/// <summary>  
@@ -248,34 +265,41 @@ namespace showmeyourbackground
 		{
 			
 			string mhtml,pichtml,picurl,htmlurl;
-			if(isConn())
-			{
-				try
-				{
-					StytleCheck ();
-					mhtml = GetHtmlStrLoc();
-					htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
-					if(htmlurl == "https://pixabay.com")
-					{
-						mhtml = GetHtmlStrNet(mainurl,"UTF8");
-						htmlurl = GetHtmlURI(mhtml,@"div class=""item""","a href");
-					}
-					pichtml = GetHtmlStr(htmlurl,"UTF8");
-					picurl = GetPicURI(pichtml,@"img itemprop=""contentURL""");
-					if(DownloadCheck(picurl))
-					{
-						Changepaperwall(SaveAsWebImg(picurl));
-					}
-				}
-				catch(Exception)
-				{
-					GetLocImg();
-				}
-			}
-			else
-			{
-				GetLocImg();
-			}
+            if (netflag)
+            {
+                if (isConn())
+                {
+                    try
+                    {
+                        StytleCheck();
+                        mhtml = GetHtmlStrLoc();
+                        htmlurl = GetHtmlURI(mhtml, @"div class=""item""", "a href");
+                        if (htmlurl == "https://pixabay.com")
+                        {
+                            mhtml = GetHtmlStrNet(mainurl, "UTF8");
+                            htmlurl = GetHtmlURI(mhtml, @"div class=""item""", "a href");
+                        }
+                        pichtml = GetHtmlStr(htmlurl, "UTF8");
+                        picurl = GetPicURI(pichtml, @"img itemprop=""contentURL""");
+                        if (DownloadCheck(picurl))
+                        {
+                            Changepaperwall(SaveAsWebImg(picurl));
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        GetLocImg();
+                    }
+                }
+                else
+                {
+                    GetLocImg();
+                }
+            }
+            else
+            {
+                GetLocImg();
+            }
 		}
 		
 		/// <summary>  
@@ -709,12 +733,10 @@ namespace showmeyourbackground
 				GetHtmlStrNet(mainurl,"UTF8");
 			}
 		}
-		
-		
-		
-		
-	}
-	public static class Define
+
+        
+    }
+    public static class Define
 	{
 		public static string datafiles = AppDomain.CurrentDomain.SetupInformation.ApplicationBase +@"data";
 		public static string Imgfiles = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"File";

@@ -9,5 +9,4 @@ D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourba
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.MainForm.resources
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.csproj.GenerateResource.Cache
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.exe
-D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.csprojResolveAssemblyReference.cache
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.NoPic.resources

@@ -1,4 +1,3 @@
-D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.csprojResolveAssemblyReference.cache
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg.resources
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg1_2.resources
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg1.resources
