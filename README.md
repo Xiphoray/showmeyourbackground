@@ -28,6 +28,8 @@ Make the software running by click on the "开始" button. It also can runs in t
 ### 版本下载：
 ### DOWNLOAD：
 
+ [V1.2](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.3/showmeyourbackground.V1.3.exe)
+
  [V1.2](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.2/showmeyourbackground.V1.2.exe)
  
  [V1.1.1](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.1.1/showmeyourbackground.V1.1.1.exe)
@@ -41,6 +43,20 @@ Make the software running by click on the "开始" button. It also can runs in t
  ***
  
  <br/>
+ 
+ ### 2017.5.4
+ ### Version 1.3 发布
+ + 增加有网络但不想下载图片的设置
+ + Add a setting that you have net but dont want to fresh your pics.
+ 
+ 哈哈哈，好久没更新了，无聊来敲两句（其实是因为这个月手机流量不够，所以更新这个功能。。。）
+ 
+ hahaha,long time no see.
+ 
+ 
+   <br/>
+   
+   
  
 ### 2017.2.26
 ### Version 1.2 发布
