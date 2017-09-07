@@ -40,52 +40,52 @@ namespace showmeyourbackground
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.label1 = new System.Windows.Forms.Label();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.label2 = new System.Windows.Forms.Label();
-			this.timer2 = new System.Windows.Forms.Timer(this.components);
-			this.SuspendLayout();
-			// 
-			// label1
-			// 
-			this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label1.Location = new System.Drawing.Point(41, 21);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(189, 42);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "噢，没有图片了\r\n快连接网络吧 ";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// timer1
-			// 
-			this.timer1.Interval = 2000;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// label2
-			// 
-			this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.label2.Location = new System.Drawing.Point(0, 0);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(50, 16);
-			this.label2.TabIndex = 1;
-			this.label2.Text = "SMYB";
-			// 
-			// timer2
-			// 
-			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-			// 
-			// NoPic
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 88);
-			this.ControlBox = false;
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Enabled = false;
-			this.Name = "NoPic";
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(41, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 42);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "噢，没有图片了\r\n快连接网络吧 ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "SMYB";
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // NoPic
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 88);
+            this.ControlBox = false;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Enabled = false;
+            this.Name = "NoPic";
+            this.ResumeLayout(false);
 
 		}
 	}

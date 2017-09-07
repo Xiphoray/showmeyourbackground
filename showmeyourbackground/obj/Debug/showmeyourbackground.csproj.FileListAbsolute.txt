@@ -12,3 +12,4 @@ D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourback
 D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.exe
 D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.pdb
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.NoPic.resources
+D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.csprojResolveAssemblyReference.cache
