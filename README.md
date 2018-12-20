@@ -3,7 +3,7 @@
 ## A software that can download pictures from pixabay.com at regular time, and save the pictures as the wallpaper.
  
  
-（） 
+（本应用已经失效，应该是网站改了规则，而我又懒得去维护软件，就这样吧） 
  
 在此向 John's background switcher 表示致意。本人初学 c#，平时发现 JBS 在断网的情况下只会提示，
 但不会自动转到本地图片进行更换，多感不便，因此决定写一个简单的壁纸更换软件。
