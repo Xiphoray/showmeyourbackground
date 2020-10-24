@@ -10,3 +10,16 @@ D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourba
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.csproj.GenerateResource.Cache
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.exe
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.NoPic.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\bin\Release\showmeyourbackground.exe.config
+E:\project_C#\showmeyourbackground\showmeyourbackground\bin\Release\showmeyourbackground.exe
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg1_2.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg1.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg2.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg3.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.egg4.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.MainForm.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.NoPic.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.csproj.GenerateResource.cache
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.csproj.CoreCompileInputs.cache
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Release\showmeyourbackground.exe

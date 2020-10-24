@@ -1,13 +1,14 @@
 # showmeyourbackground
 ## 一个可以定时在 pixabay.com 上爬图片，并将图片保存为壁纸的软件。
 ## A software that can download pictures from pixabay.com at regular time, and save the pictures as the wallpaper.
- 
- 
-（本应用已经失效，应该是网站改了规则，而我又懒得去维护软件，就这样吧） 
- 
+
+~~（本应用已经失效，应该是网站改了规则，而我又懒得去维护软件，就这样吧）~~
+
+换了接口，可以继续使用了。使用 [bing.ioliu.cn](https://bing.ioliu.cn/) 接口获取必应每日图片，感谢大佬的开源接口。
+
 在此向 John's background switcher 表示致意。本人初学 c#，平时发现 JBS 在断网的情况下只会提示，
 但不会自动转到本地图片进行更换，多感不便，因此决定写一个简单的壁纸更换软件。
-一开始想在 500px.com 上爬图片，但由于本人资历尚浅，无法应对经过js处理的网页，只好选择 pixabay.com 。
+一开始想在 500px.com 上爬图片，但由于本人资历尚浅，无法应对经过js处理的网页，~~只好选择 pixabay.com~~ 。
 
 Firstly, extend thanks to John's background switcher. I have learnt c# for a short time. Usually, I find when using JBS without Internet, it only show a tip, but not use local pictures as wallpaper automatically. I feel so unconvenient about it, so I decied to make a simple software that can change the wallpaper.
 
@@ -31,36 +32,53 @@ Make the software running by click on the "开始" button. It also can runs in t
 ### 版本下载：
 ### DOWNLOAD：
 
+ [V2.0](https://github.com/Xiphoray/showmeyourbackground/releases/download/V2.0/showmeyourbackground.V2.0.exe)
+
  [V1.3](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.3/showmeyourbackground.V1.3.exe)
 
  [V1.2](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.2/showmeyourbackground.V1.2.exe)
- 
+
  [V1.1.1](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.1.1/showmeyourbackground.V1.1.1.exe)
- 
+
  [V1.1](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.1/showmeyourbackground.V1.1.exe)
-  
+
  [V1.0](https://github.com/Xiphoray/showmeyourbackground/releases/download/V1.0/showmeyourbackground.V1.0.exe)
- 
+
   <br/>
- 
- ***
- 
+
+***
+
  <br/>
- 
+
+ ### 2020.10.24
+
+ ### Version 2.0 发布
+
+ + 更换图片源接口
+ + Change the image source API.
+
+ 旧版本使用网页爬虫直接下载 pixabay 的图片，但是由于它们更换了网站架构，使得爬虫失效。我也懒得重新去适配他们的新网站了，恰巧之前发现了 [bing.ioliu.cn](https://bing.ioliu.cn/) 这个 API 可以用，于是就换成这个了。缺点是不能使用图片分类了。
+
+
+   <br/>
+
+   
+
  ### 2017.5.4
+
  ### Version 1.3 发布
  + 增加有网络但不想下载图片的设置
  + Add a setting that you have net but dont want to fresh your pics.
- 
+
  哈哈哈，好久没更新了，无聊来敲两句（其实是因为这个月手机流量不够，所以更新这个功能。。。）
- 
+
  hahaha,long time no see.
- 
- 
+
+
    <br/>
+
    
-   
- 
+
 ### 2017.2.26
 ### Version 1.2 发布
 + 修复在断网&&图库没图的情况下出错的问题。（会出现一个贴心且炫酷的提示哦~）
@@ -71,13 +89,13 @@ Make the software running by click on the "开始" button. It also can runs in t
 
 
   <br/>
-  
+
 ### 2017.2.20
 ### Version 1.1.1 发布
 + 紧急修复断网情况下更换类别时程序出错的问题。（虽然断网情况下选类别是没有任何用处的）
 + Repair the problem when changeing the category outline.(Althought it is useless to changeing the category outline)
- 
-   
+
+  
   <br/>
 ### 2017.2.19
 + 紧急修复从任务栏返回时不能选择类别的问题。
@@ -88,7 +106,7 @@ Make the software running by click on the "开始" button. It also can runs in t
 
 
  <br/>
- 
+
 ### 2017.2.17
 ### Version 1.1 发布
 + 新增壁纸类型选项。（然而类型是照片作者自己写的，所以，你懂的）
@@ -109,7 +127,7 @@ I can't believe that it can update in a such short time...hehe...
 
 
  <br/>
- 
+
 ### 2017.2.6
 ### Version 1.0 发布啦 ！ ！ ！
 + 下载图片自适应屏幕。
@@ -133,7 +151,7 @@ Anyway, I'm so happy about it, because this is my first software version.
 
 
  <br/>
- 
+
 ### 2017.2.5（2）
 + 紧急修复网页刷新问题。
 + Repair the problem of reflash the web.
@@ -157,7 +175,7 @@ The picture default place in the center. Change the wallpaper in each 24s.
 
 
  <br/>
- 
+
 ### 2017.2.4
 + 完成自动下载图片部分。
 + Complete the part of download the pictures automatically.

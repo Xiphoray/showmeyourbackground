@@ -13,3 +13,18 @@ D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourback
 D:\project C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.pdb
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.NoPic.resources
 D:\project C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.csprojResolveAssemblyReference.cache
+E:\project_C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.exe.config
+E:\project_C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.exe
+E:\project_C#\showmeyourbackground\showmeyourbackground\bin\Debug\showmeyourbackground.pdb
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg1_2.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg1.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg2.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg3.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.egg4.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.MainForm.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.NoPic.resources
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.csproj.GenerateResource.cache
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.csproj.CoreCompileInputs.cache
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.exe
+E:\project_C#\showmeyourbackground\showmeyourbackground\obj\Debug\showmeyourbackground.pdb

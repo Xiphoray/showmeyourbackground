@@ -19,6 +19,7 @@ using Microsoft.Win32;
 
 
 
+
 namespace showmeyourbackground
 {
 	
@@ -47,6 +48,15 @@ namespace showmeyourbackground
 			string lpvParam,
 			int fuWinIni
 		);
+		[DllImport("user32.dll")]
+		static extern IntPtr GetDC(IntPtr ptr);
+		[DllImport("user32.dll", EntryPoint = "ReleaseDC")]
+		static extern IntPtr ReleaseDC(IntPtr hWnd, IntPtr hDc);
+		[DllImport("gdi32.dll")]
+		static extern int GetDeviceCaps(
+				IntPtr hdc, // handle to DC  
+				int nIndex // index of capability  
+				);
 		void button2_Click(object sender, EventArgs e) //运行按键 
 		{
 			button2.Hide();
@@ -64,7 +74,7 @@ namespace showmeyourbackground
 			button2 .Show();
 			button3.Hide ();
 			DelePic ();
-			comboBox2.Show();
+			comboBox2.Hide();
 			comboBox1.Show();
             comboBox3.Show();
 			workingflag = false;
@@ -128,7 +138,7 @@ namespace showmeyourbackground
 			button2.Show ();
 			button3.Hide ();
 			comboBox1.Show();
-			comboBox2.Show ();
+			comboBox2.Hide();
             comboBox3.Show();
 			label1.Hide ();
 			this.Show();                                //窗体显示
@@ -263,25 +273,31 @@ namespace showmeyourbackground
 		/// </summary>    
 		public void work()
 		{
-			
-			string mhtml,pichtml,picurl,htmlurl;
+
+			//string mhtml,pichtml,picurl,htmlurl;
+			string picurl;
             if (netflag)
             {
                 if (isConn())
                 {
                     try
                     {
-                        StytleCheck();
-                        mhtml = GetHtmlStrLoc();
-                        htmlurl = GetHtmlURI(mhtml, @"div class=""item""", "a href");
-                        if (htmlurl == "https://pixabay.com")
-                        {
-                            mhtml = GetHtmlStrNet(mainurl, "UTF8");
-                            htmlurl = GetHtmlURI(mhtml, @"div class=""item""", "a href");
-                        }
-                        pichtml = GetHtmlStr(htmlurl, "UTF8");
-                        picurl = GetPicURI(pichtml, @"img itemprop=""contentURL""");
-                        if (DownloadCheck(picurl))
+						//StytleCheck();
+						//mhtml = GetHtmlStrLoc();
+						//htmlurl = GetHtmlURI(mhtml, @"div class=""item""", "a href");
+						//if (htmlurl == "https://pixabay.com")
+						//{
+						//    mhtml = GetHtmlStrNet(mainurl, "UTF8");
+						//    htmlurl = GetHtmlURI(mhtml, @"div class=""item""", "a href");
+						//}
+						//pichtml = GetHtmlStr(htmlurl, "UTF8");
+						//picurl = GetPicURI(pichtml, @"img itemprop=""contentURL""");
+						string url = "https://bing.ioliu.cn/v1/rand?type=json&w=1920&h=1080";
+						
+						string json = GetHtmlStr(url, "UTF8");
+						
+						picurl = GetPicURIfromapi(json);
+						if (DownloadCheck(picurl))
                         {
                             Changepaperwall(SaveAsWebImg(picurl));
                         }
@@ -301,7 +317,34 @@ namespace showmeyourbackground
                 GetLocImg();
             }
 		}
-		
+
+		public string Getjson(string Url)
+		{
+			//System.GC.Collect();
+			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+			//request.Method = "GET";
+			request.ContentType = "application/jsonp";
+
+			HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+			Stream myResponseStream = response.GetResponseStream();
+			StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
+			string retString = myStreamReader.ReadToEnd();
+
+			myStreamReader.Close();
+			myResponseStream.Close();
+
+			if (response != null)
+			{
+				response.Close();
+			}
+			if (request != null)
+			{
+				request.Abort();
+			}
+
+			return retString;
+		}
+
 		/// <summary>  
 		/// 更改壁纸  
 		/// </summary>  
@@ -398,9 +441,13 @@ namespace showmeyourbackground
 		{  
 		    string htmlStr = "";  
 		    if (!String.IsNullOrEmpty(url))  
-		    {  
-		        WebRequest request = WebRequest.Create(url);            //实例化WebRequest对象  
-		        WebResponse response = request.GetResponse();           //创建WebResponse对象  
+		    {
+				HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);            //实例化WebRequest对象  
+				request.Timeout = 10000;
+				request.UserAgent = "Code Sample Web Client";
+				request.Credentials = CredentialCache.DefaultCredentials;
+
+				HttpWebResponse response = (HttpWebResponse)request.GetResponse();           //创建WebResponse对象  
 		        Stream datastream = response.GetResponseStream();       //创建流对象  
 		        Encoding ec = Encoding.Default;  
 		        if (encoding == "UTF8")  
@@ -552,9 +599,19 @@ namespace showmeyourbackground
 	             string result = TitleMatch.Groups["url"].Value;  
 	             result = result.Substring(0,result.Length-3);
 	             return result;  
-	         }  
-	          
-	          /// <summary>  
+	         }
+			public static string GetPicURIfromapi(string str)
+			{
+
+				string tmpStr = string.Format("\"http://[^\\s]*\\?");
+				Match TitleMatch = Regex.Match(str, tmpStr, RegexOptions.IgnoreCase);
+
+				string result = TitleMatch.Value;
+				result = result.Substring(1, result.Length - 2);
+				return result;
+			}
+
+		/// <summary>  
 		/// 彩蛋
 		/// </summary>  
 		public void egg()
@@ -628,11 +685,16 @@ namespace showmeyourbackground
 	          /// <param name="Picpath">图片文件地址</param>  
 	        public void ChangePic(string Picpath)
 	        {
-	        	int SH = Screen.PrimaryScreen.Bounds.Height;
-			int SW = Screen.PrimaryScreen.Bounds.Width;
+			IntPtr hdc = GetDC(IntPtr.Zero);
+
+			
+			int SH = GetDeviceCaps(hdc, 117);  //Screen.PrimaryScreen.Bounds.Height;
+			int SW = GetDeviceCaps(hdc, 118); //Screen.PrimaryScreen.Bounds.Width;
+			ReleaseDC(IntPtr.Zero, hdc);
 			Image pic=Image.FromFile(Define.PicPath + Picpath);//strFilePath是该图片的绝对路径
 			int PW=pic.Width;//长度像素值
 			int PH=pic.Height;//高度像素值 
+
 			if((PH * SW)/PW >= SH)
 			{
 				Bitmap repic = new Bitmap(pic,SW,(PH*SW)/PW);

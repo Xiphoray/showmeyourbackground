@@ -207,6 +207,7 @@ namespace showmeyourbackground
             this.comboBox2.Size = new System.Drawing.Size(150, 25);
             this.comboBox2.TabIndex = 5;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBox2.Visible = false;
             // 
             // button3
             // 
